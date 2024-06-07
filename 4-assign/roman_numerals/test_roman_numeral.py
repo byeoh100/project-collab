@@ -12,3 +12,9 @@ def test_eight():
 
 def test_nine():
     assert to_roman(9) == "IX"
+
+def test_double_digit():
+    assert to_roman(33) == "XXXIII"
+
+def test_forty():
+    assert to_roman(40) == "XL"
