@@ -76,3 +76,42 @@ def char_count(str):                            # Takes string and returns list 
     count_list.sort(key=lambda x : x[1], reverse = True)
     return count_list
 
+def palindrome(word):                           # Checks if word is palindome, need to complete challenge
+    if type(word) != str:
+        word = str(word)
+
+    end = len(word) - 1
+
+    for start in range(len(word)):
+        if start >= end:
+            return True
+        if word[start] != word[end]:
+            return False
+        end -= 1
+        
+def calculate_mode(lst):
+    freq_dict = {}
+    for i in lst:
+        if i not in freq_dict:
+            freq_dict[i] = 1
+        else:
+            freq_dict[i] += 1
+    freq_dict = sorted(freq_dict.items(), key=lambda kv: kv[1], reverse = True)
+
+    ret = []
+    max = 0
+    for key, value in freq_dict:
+        if value >= max:
+            max = value
+            ret.append(key)
+    return ret
+
+def pad(lst, size, insert = None):
+    if len(lst) >= size:
+        return lst
+    else:
+        while(len(lst) < size):
+            lst.append(insert)
+    return lst
+
+print(pad([1,2,3], 3))
