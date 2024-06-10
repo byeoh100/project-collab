@@ -114,4 +114,31 @@ def pad(lst, size, insert = None):
             lst.append(insert)
     return lst
 
-print(pad([1,2,3], 3))
+def isValid(s: str) -> bool:
+    brac_list = {
+        ")" : "(",
+        "]" : "[",
+        "}" : "{"
+    }
+    brac_stack = []
+    brac_open = 0
+    brac_close = 0
+    valid_open_bracket = brac_list.values()
+    for i in s:
+        if i in valid_open_bracket:
+            brac_open += 1
+        else:
+            brac_close += 1
+            if brac_close > brac_open:
+                return False
+            if brac_list[i] == brac_stack[-2]:
+                brac_stack.pop()
+                brac_stack.pop()
+                brac_close -= 1
+                brac_open -= 1
+    if not brac_stack:
+        return True
+    else:
+        return False
+    
+print(isValid("(){}}{"))
