@@ -125,6 +125,7 @@ def isValid(s: str) -> bool:
     brac_close = 0
     valid_open_bracket = brac_list.values()
     for i in s:
+        brac_stack.append(i)
         if i in valid_open_bracket:
             brac_open += 1
         else:
